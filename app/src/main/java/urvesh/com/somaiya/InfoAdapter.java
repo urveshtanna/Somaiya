@@ -31,7 +31,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.MyViewHolder>{
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
-
+    //TEst
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Info_drawer current = data.get(position);
