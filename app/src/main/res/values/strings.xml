@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Somaiya</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="title_activity_science">Science</string>
+    <string name="search_tab">Search</string>
+    <string-array name="science">
+        <item>Bachelor in Computer Science</item>
+        <item>Bachelor in Information Technology</item>
+        <item>Masters in Computer Science</item>
+        <item>Masters in Information Technology</item>
+    </string-array>
+    <string-array name="commerce">
+        <item>Bachelor in Commerce</item>
+    </string-array>
+    <string-array name="arts">
+        <item>Bachelor in Arts</item>
+        <item>Masters in Arts</item>
+    </string-array>
+    <string name="title_activity_course_main">Course</string>
+    <string name="title_activity_course">Course</string>
+    <string name="title_activity_commerce_main">Commerce</string>
+    <string name="title_activity_commerce_courses">Commerce</string>
+    <string name="title_activity_arts_courses">Arts</string>
+    <string name="bachelor_arts_content">A Bachelor of Arts (B.A., BA, A.B., or AB), from the Latin artium baccalaureus, is a bachelor\'s degree awarded for an undergraduate course or program in either the liberal arts, the sciences, or both. Bachelor of Arts degree programs generally take three to four years depending upon the country, academic institution, and specific majors or minors.</string>
+    <string name="master_content_arts">A Masters of Arts (M.A., MA, A.M., or AM), from the Latin artium baccalaureus, is a master\'s degree awarded for an postgraduate course or program in either the liberal arts, the sciences, or both. Masters of Arts degree programs generally take two years depending upon the country, academic institution, and specific majors or minors.</string>
+    <string name="bachelor_science_cs">The Bachelor of Computer Science or Bachelor of Science in Computer Science, (abbreviated BCompSc or BCS or BS CS), is a type of bachelor\'s degree, usually awarded after three or four years of colligate study in computer science, but can be awarded in fewer years depending on factors such as an institution\'s course requirements and academic calendar. In some cases it can be awarded in 5 years. In general, computer science degree programs emphasize the mathematical and theoretical foundations of computing. A bachelor of computer science degree is normally required in order to work in the information technology industry.</string>
+    <string name="bachelor_science_it">A Bachelor of Information Technology (abbreviations BIT, BS IT is an undergraduate academic degree that generally requires three to five years of study. While the degree has a major focus on computers and technology, it differs from a Computer Science degree in that students are also expected to study management and information science, and there are reduced requirements for mathematics. A degree in computer science can be expected to concentrate on the scientific aspects of computing, while a degree in information technology can be expected to concentrate on the business and communication applications of computing.</string>
+    <string name="master_science_it">A Master of Science in Information Technology (abbreviated M.Sc. IT, MSc IT or MSIT) is a type of postgraduate academic master\'s degree offered in a number of countries. The degree typically includes coursework in both computer science and business skills, but the core curriculum might depend on the school and result in other degrees and specializations</string>
+    <string name="title_activity_academic_calendar">Academic Calendar</string>
+
+    <string name="title_activity_splash">splash</string>
+    <string name="action_bar_animation_arts">action_animation_arts</string>
+    <string name="action_bar_animation_commerce">action_animation_commerce</string>
+    <string name="action_bar_animation_science">action_animation_science</string>
+</resources>

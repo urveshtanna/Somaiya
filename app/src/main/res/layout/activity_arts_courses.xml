@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="urvesh.com.somaiya.Commerce_courses">
+
+    <include
+        android:id="@+id/app_bar_arts2"
+        layout="@layout/app_bar_arts"
+        android:transitionName="@string/action_bar_animation_arts"
+        />
+
+    <it.neokree.materialtabs.MaterialTabHost
+        android:id="@+id/materialTabHost"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:accentColor="#FF9800"
+        app:primaryColor="#009688"
+        android:textAllCaps="false"
+        android:transitionName="@string/title_activity_arts_courses"/>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

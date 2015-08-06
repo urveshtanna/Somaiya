@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/hangoutTvOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="."
+        android:textColor="@color/accentColor"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/hangoutTvTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/hangoutTvOne"
+        android:text="."
+        android:textColor="@color/accentColor"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/hangoutTvThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/hangoutTvTwo"
+        android:text="."
+        android:textColor="@color/accentColor"
+        android:textSize="40sp" />
+
+</RelativeLayout>

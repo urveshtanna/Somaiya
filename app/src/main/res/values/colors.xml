@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#3F51B5</color>
+    <color name="primaryColorDark">#303F9F</color>
+    <color name="primaryColorLight">#C5CAE9</color>
+    <color name="colorHighlight">#B6B6B6</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#727272</color>
+    <color name="accentColor">#A62D2D</color>
+    <color name="colorDivider">#B6B6B6</color>
+
+    <color name="primaryArts">#009688</color>
+    <color name="primaryDarkArts">#00796B</color>
+
+    <color name="primaryScience">#795548</color>
+    <color name="primaryDarkScience">#5D4037</color>
+
+    <color name="primaryCommerce">#F44336</color>
+    <color name="primaryDarkCommerce">#D32F2F</color>
+
+    <color name="black_overlay">#66000000</color>
+
+</resources>
