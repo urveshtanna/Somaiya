@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -39,30 +38,7 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    public void startNew(int position){
-        switch (position){
-            case 0:
-                Toast.makeText(getApplicationContext(),"On Click "+position,Toast.LENGTH_SHORT).show();
-                break;
-            case 1:
-                Toast.makeText(getApplicationContext(),"On Click "+position,Toast.LENGTH_SHORT).show();
-                break;
-            case 2:
-                Toast.makeText(getApplicationContext(),"On Click "+position,Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, Course.class));
-                break;
-            case 3:
-                Toast.makeText(getApplicationContext(),"On Click "+position,Toast.LENGTH_SHORT).show();
-                break;
-            case 4:
-                Toast.makeText(getApplicationContext(),"On Click "+position,Toast.LENGTH_SHORT).show();
-                break;
-            case 5:
-                Toast.makeText(getApplicationContext(),"On Click "+position,Toast.LENGTH_SHORT).show();
-                break;
-        }
 
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -72,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_settings) {
-            Toast.makeText(getApplicationContext(),"On Progress!",Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(this,UserSettingActivity.class);
             startActivityForResult(intent,RESULT_SETTING);
         }

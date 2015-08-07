@@ -4,6 +4,7 @@ package urvesh.com.somaiya;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -16,7 +17,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.listeners.ActionClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,16 +87,39 @@ public class NavigationDrawerFragment extends Fragment{
                         startActivity(new Intent(getActivity(),Academic_calendar.class));
                         break;
                     case 1:
-                        Toast.makeText(getActivity(),"On Click "+position,Toast.LENGTH_SHORT).show();
+                        Snackbar.with(getActivity()).text("On Click " + position).textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).actionLabel("Test").actionColor(Color.rgb(255, 193, 7)).actionListener(new ActionClickListener() {
+                            @Override
+                            public void onActionClicked(Snackbar snackbar) {
+
+                            }
+                        }).show(getActivity());
                         break;
                     case 2:
                         startActivity(new Intent(getActivity(),Course.class));
                         break;
                     case 3:
-                        Toast.makeText(getActivity(),"On Click "+position,Toast.LENGTH_SHORT).show();
+                        Snackbar.with(getActivity()).text("On Click " + position).textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).actionLabel("Test").actionColor(Color.rgb(255, 193, 7)).actionListener(new ActionClickListener() {
+                            @Override
+                            public void onActionClicked(Snackbar snackbar) {
+
+                            }
+                        }).show(getActivity());
                         break;
                     case 4:
-                        Toast.makeText(getActivity(),"On Click "+position,Toast.LENGTH_SHORT).show();
+                        Snackbar.with(getActivity()).text("On Click " + position).textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).actionLabel("Test").actionColor(Color.rgb(255, 193, 7)).actionListener(new ActionClickListener() {
+                            @Override
+                            public void onActionClicked(Snackbar snackbar) {
+
+                            }
+                        }).show(getActivity());
+                        break;
+                    case 5:
+                        Snackbar.with(getActivity()).text("On Click " + position).textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).actionLabel("Test").actionColor(Color.rgb(255, 193, 7)).actionListener(new ActionClickListener() {
+                            @Override
+                            public void onActionClicked(Snackbar snackbar) {
+
+                            }
+                        }).show(getActivity());
                         break;
                 }
                 if(position == 2){
