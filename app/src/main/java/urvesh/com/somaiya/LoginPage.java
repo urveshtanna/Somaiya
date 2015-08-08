@@ -1,11 +1,14 @@
 package urvesh.com.somaiya;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +26,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.listeners.ActionClickListener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -156,28 +160,43 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
         updateProfile(false);
 
     }
+
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.signin:
                 signIn();
                 break;
         }
     }
-    public void signIn(){
-        googlePlusLogin();
+
+    public void signIn() {
+        if (haveNetworkConnection() == true) {
+            googlePlusLogin();
+        }
+        else{
+            Snackbar.with(this).text("No Internet Connection").textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).actionLabel("Retry").actionColor(Color.rgb(255, 193, 7)).actionListener(new ActionClickListener() {
+                @Override
+                public void onActionClicked(Snackbar snackbar) {
+                    signIn();
+                }
+            }).show(this);
+        }
     }
-    public void logout(){
+
+    public void logout() {
         googlePlusLogout();
     }
-    private void googlePlusLogin(){
-        if(!googleApiClient.isConnecting()){
+
+    private void googlePlusLogin() {
+        if (!googleApiClient.isConnecting()) {
             signInUser = true;
             resolveSiginInError();
         }
     }
-    private void googlePlusLogout(){
-        if(googleApiClient.isConnected()){
+
+    private void googlePlusLogout() {
+        if (googleApiClient.isConnected()) {
             Plus.AccountApi.clearDefaultAccount(googleApiClient);
             googleApiClient.disconnect();
             googleApiClient.connect();
@@ -185,6 +204,7 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
             Snackbar.with(this).text("Disconnected").textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).show(this);
         }
     }
+
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (!connectionResult.hasResolution()) {
@@ -216,12 +236,32 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
                 break;
         }
     }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
     //Downloading profile Picture
-    private class LoadProfileImage extends AsyncTask{
+    private class LoadProfileImage extends AsyncTask {
         ImageView imageView;
-        public LoadProfileImage(ImageView image){
+
+        public LoadProfileImage(ImageView image) {
             this.imageView = image;
         }
+
         @Override
         protected Object doInBackground(Object[] params) {
             String url = (String) params[0];
