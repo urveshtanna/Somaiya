@@ -18,10 +18,8 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="prefAppTheme"
-            android:title="Theme"
             android:summary="Switch Theme Light/Dark"
-            android:textOff="Switch to Dark Theme"
-            android:textOn="Switch to Light Theme">
+            android:title="Theme">
         </SwitchPreference>
         <ListPreference
             android:key="prefSyncFrequency"

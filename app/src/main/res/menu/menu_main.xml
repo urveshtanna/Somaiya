@@ -7,4 +7,9 @@
         android:showAsAction="never"
         android:title="Settings"
         android:icon="@android:drawable/ic_menu_preferences"/>
+    <item
+        android:id="@+id/menu_login"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Login Page"/>
 </menu>

@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="urvesh.com.somaiya">
+    package="urvesh.com.somaiya" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppThemeLight" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
         <activity
             android:name=".SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,26 +29,26 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Science_main"
             android:label="@string/title_activity_science"
-            android:theme="@style/ScienceTheme">
+            android:theme="@style/ScienceThemeLight" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".Course"
-            android:label="@string/title_activity_course">
+            android:label="@string/title_activity_course" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"></meta-data>
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".Commerce_courses"
             android:label="@string/title_activity_commerce_courses"
-            android:theme="@style/CommerceTheme">
+            android:theme="@style/CommerceThemeLight" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -49,18 +56,21 @@
         <activity
             android:name=".Arts_courses"
             android:label="@string/title_activity_arts_courses"
-            android:theme="@style/ArtsTheme">
+            android:theme="@style/ArtsThemeLight" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".Academic_calendar"
-            android:label="@string/title_activity_academic_calendar"></activity>
+            android:label="@string/title_activity_academic_calendar" />
         <activity
             android:name=".UserSettingActivity"
-            android:label="@string/title_activity_user_settings">
-
+            android:label="@string/title_activity_user_settings" >
+        </activity>
+        <activity
+            android:name=".LoginPage"
+            android:label="@string/title_activity_login_page" >
         </activity>
     </application>
 

@@ -47,10 +47,16 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+
         if (id == R.id.menu_settings) {
 
             Intent intent = new Intent(this,UserSettingActivity.class);
             startActivityForResult(intent,RESULT_SETTING);
+        }
+        else if(id == R.id.menu_login){
+            Intent intent = new Intent(this,LoginPage.class);
+            startActivity(intent);
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -68,8 +74,7 @@ public class MainActivity extends ActionBarActivity {
     private void showUserSettings(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringBuilder stringBuilder = new StringBuilder();
-        //
-        // stringBuilder.append("\nUserName: "+sharedPreferences.getString("profUsername", null));
+        stringBuilder.append("\nApp theme Dark: "+sharedPreferences.getBoolean("prefAppTheme", false));
         stringBuilder.append("\nSend Report: "+sharedPreferences.getBoolean("prefSendReport", false));
         stringBuilder.append("\nSync Frequency: "+sharedPreferences.getString("prefSyncFrequency", null));
         TextView settingText = (TextView) findViewById(R.id.userSettings);
