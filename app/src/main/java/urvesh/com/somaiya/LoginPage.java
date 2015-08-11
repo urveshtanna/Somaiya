@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
@@ -43,13 +54,20 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
     private ConnectionResult mConnectionResult;
     private SignInButton signInButton;
     private ImageView profileImage;
-    private TextView username, email;
+    private TextView username, email, loginDetails;
     private LinearLayout profileDetails, siginDetails;
     private Button logout;
+
+    private LoginButton loginButton;
+    private ProfileTracker profileTracker;
+    private AccessTokenTracker accessTokenTracker;
+    private CallbackManager mCallbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        mCallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login_page);
 
         signInButton = (SignInButton) findViewById(R.id.signin);
@@ -71,6 +89,41 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
         siginDetails = (LinearLayout) findViewById(R.id.signInFrame);
 
         googleApiClient = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API, Plus.PlusOptions.builder().build()).addScope(Plus.SCOPE_PLUS_LOGIN).build();
+
+        loginDetails = (TextView) findViewById(R.id.loginDetails);
+        loginButton = (LoginButton) findViewById(R.id.login_button_facebook);
+        loginButton.setReadPermissions("user_friends");
+        loginFacebook();
+    }
+
+    public void loginFacebook(){
+        if (haveNetworkConnection() == true) {
+            loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    AccessToken accessToken = loginResult.getAccessToken();
+                    Profile profile = Profile.getCurrentProfile();
+                    if (profile != null) {
+                        loginDetails.setText("Welcome: " + profile.getName());
+                        Log.d("ACCOUNT NAME:", profile.getName());
+                    }
+
+                }
+
+                @Override
+                public void onCancel() {
+                    loginDetails.setText("on Cancel");
+
+                }
+
+                @Override
+                public void onError(FacebookException e) {
+                    loginDetails.setText("Error:" + e.getMessage());
+                }
+            });
+        } else {
+            Snackbar.with(this).text("No Internet Connect").textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).show(this);
+        }
     }
 
     protected void onStart() {
@@ -82,6 +135,8 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
     protected void onStop() {
         super.onStop();
         googleApiClient.disconnect();
+        //accessTokenTracker.stopTracking();
+        //profileTracker.stopTracking();
     }
 
     private void resolveSiginInError() {
@@ -142,7 +197,6 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
                 String personName = person.getDisplayName();
                 String personPhotoUrl = person.getImage().getUrl();
                 String emailId = Plus.AccountApi.getAccountName(googleApiClient);
-
                 username.setText(personName);
                 email.setText(emailId);
                 new LoadProfileImage(profileImage).execute(personPhotoUrl);
@@ -173,8 +227,7 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
     public void signIn() {
         if (haveNetworkConnection() == true) {
             googlePlusLogin();
-        }
-        else{
+        } else {
             Snackbar.with(this).text("No Internet Connection").textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).actionLabel("Retry").actionColor(Color.rgb(255, 193, 7)).actionListener(new ActionClickListener() {
                 @Override
                 public void onActionClicked(Snackbar snackbar) {
@@ -223,6 +276,7 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case RC_SIGN_IN:
                 if (resultCode == RESULT_OK) {
@@ -282,4 +336,6 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
             imageView.setImageBitmap((Bitmap) o);
         }
     }
+
+
 }

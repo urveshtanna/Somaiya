@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.listeners.ActionClickListener;
@@ -41,6 +42,8 @@ public class NavigationDrawerFragment extends Fragment{
 
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
+
+    private TextView username;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -74,7 +77,7 @@ public class NavigationDrawerFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        final View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         adapter = new InfoAdapter(getActivity(),getData());
         recyclerView.setAdapter(adapter);

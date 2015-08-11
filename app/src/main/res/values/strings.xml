@@ -50,4 +50,6 @@
     <string name="pref_user_profile">User Profile</string>
     <string name="pref_update_setting">Update Settings</string>
     <string name="title_activity_login_page">LoginPage</string>
+    <string name="facebook_app_id">1092172467478699</string>
+    <string name="title_activity_login">Login</string>
 </resources>

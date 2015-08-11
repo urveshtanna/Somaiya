@@ -3,7 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
+    repositories {
+        mavenCentral()
+    }
     defaultConfig {
         applicationId "urvesh.com.somaiya"
         minSdkVersion 15
@@ -28,4 +30,5 @@ dependencies {
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.nispok:snackbar:2.11.+'
     compile 'com.google.android.gms:play-services:7.3.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.1.0'
 }
