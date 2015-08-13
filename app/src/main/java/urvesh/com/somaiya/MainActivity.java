@@ -58,10 +58,6 @@ public class MainActivity extends ActionBarActivity {
             startActivity(intent);
 
         }
-        else if(id == R.id.menu_login_facebook){
-            Intent intent = new Intent(this,Login.class);
-            startActivity(intent);
-        }
 
         return super.onOptionsItemSelected(item);
     }

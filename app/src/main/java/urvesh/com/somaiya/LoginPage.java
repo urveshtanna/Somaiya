@@ -93,11 +93,29 @@ public class LoginPage extends Activity implements GoogleApiClient.ConnectionCal
         loginDetails = (TextView) findViewById(R.id.loginDetails);
         loginButton = (LoginButton) findViewById(R.id.login_button_facebook);
         loginButton.setReadPermissions("user_friends");
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldToken, AccessToken newToken) {
+
+            }
+        };
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile oldProfile, Profile newProfile) {
+                //Set Text here
+                if(newProfile!=null){
+                    loginDetails.setText("Welcome: " + newProfile.getName());
+                }
+
+            }
+        };
+        accessTokenTracker.startTracking();
+        profileTracker.startTracking();
         loginFacebook();
     }
 
     public void loginFacebook(){
-        if (haveNetworkConnection() == true) {
+        if (haveNetworkConnection()) {
             loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
