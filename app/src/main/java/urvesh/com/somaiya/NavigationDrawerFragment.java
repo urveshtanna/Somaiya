@@ -50,7 +50,7 @@ public class NavigationDrawerFragment extends Fragment{
     }
     public static List<Info_drawer> getData(){
         List<Info_drawer> data = new ArrayList<>();
-        String[] title = {"Academic Calendar","Campus","Courses","News","Student","About Us"};
+        String[] title = {"Academic Calendar","Location","Courses","Voice","Student","About Us"};
         int[] icons ={ R.drawable.ic_event_drawer, R.drawable.ic_campus_drawer,R.drawable.ic_course_drawer,R.drawable.ic_new_drawer, R.drawable.ic_student_drawer, R.drawable.ic_about_drawer};
         for(int i = 0; i <title.length;i++){
             Info_drawer current = new Info_drawer();
@@ -96,7 +96,7 @@ public class NavigationDrawerFragment extends Fragment{
                         startActivity(new Intent(getActivity(),Course.class));
                         break;
                     case 3:
-                        Snackbar.with(getActivity()).text("On Click " + position).textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).show(getActivity());
+                        startActivity(new Intent(getActivity(),VoiceMain.class));
                         break;
                     case 4:
                         Snackbar.with(getActivity()).text("On Click " + position).textColor(Color.WHITE).color(Color.rgb(66, 66, 66)).show(getActivity());
